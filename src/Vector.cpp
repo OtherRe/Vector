@@ -8,7 +8,9 @@ Vector<T>::Vector(std::initializer_list<T> &&il)
 {
     const size_t size = il.size();
     static_assert(size > 0);
-
+    if(size < _defaultCapacity)
+        size = _defaultCapacity;
+        
     _array = new T[size];
     _capacity = size;
     _size = size;
